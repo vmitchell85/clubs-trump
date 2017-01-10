@@ -12,16 +12,6 @@ var Vue = new Vue({
             return this.players.sum('bid');
         }
     },
-    mounted() {
-        this.setPlayers(3); // TEMP
-        this.players[0].name = 'Vince Mitchell';
-        this.players[0].score = 200;
-        this.players[1].name = 'Matt Jorat';
-        this.players[1].score = 100;
-        this.players[2].name = 'Ottis Compton';
-        this.players[2].score = 55;
-        this.setView('standings');
-    },
     methods: {
         setPlayers: function(count){
             for (var i = 0; i < count; i++) {
