@@ -35,7 +35,7 @@ var Vue = new Vue({
             player.score += parseInt(player.bid) + 10;
             player.bid = null;
             player.failed_bid = null;
-            player.bid_error = true;
+            player.bid_error = false;
         },
         failedBid: function(player, index){
             if( player.bid == player.failed_bid ){
