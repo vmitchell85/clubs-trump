@@ -62,7 +62,7 @@
                                     <div class="column" :class="{ 'is-hidden-mobile' : player.bid == null || player.bid == '' }">
                                         <div class="control has-addons">
                                             <input type="number" class="input is-fullwidth" :class="{ 'is-disabled' : !player.bid }" v-model="player.failed_bid" placeholder="Enter # Taken" tabindex="3">
-                                            <a class="button is-danger" :class="{ 'is-disabled' : !player.bid }" @click="failedBid(player, index)">Failed Bid</a>
+                                            <a class="button is-danger" :class="{ 'is-disabled' : player.bid == null || player.bid == '' || !player.failed_bid  }" @click="failedBid(player, index)">Failed Bid</a>
                                         </div>
                                         <span v-if="player.bid_error" class="help is-danger">BID CANNOT MATCH FAILED BID</span>
                                     </div>
