@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.0/css/bulma.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <div id="app">
@@ -15,8 +16,9 @@
             </div>
         </div>
         <div class="columns">
-            <div class="column">
-                <span class="tag is-large is-primary">Total Bids: {{totalBids}}</span>
+            <div class="column has-text-centered">
+                <span class="tag is-large is-primary" v-if="totalBids">Total Bids: {{totalBids}}</span>
+                <span v-else class="tag is-large is-warning">Bids Incomplete</span>
             </div>
         </div>
         <div class="columns">
@@ -33,14 +35,14 @@
         <div class="columns" v-if="view !== 'standings'">
             <div class="column">
                 <article class="media" v-for="(player, index) in players">
-                    <figure class="media-left">
+                    <figure class="media-left is-hidden-mobile">
                         <div class="title circle64 is-cascade">{{player.name | getInitials}}</div>
                     </figure>
                     <div class="media-content">
                         <div class="content">
                             <div class="name" v-if="view == 'names'">
                                 <p class="control">
-                                  <input class="input" type="text" placeholder="John Doe" v-model="player.name">
+                                  <input class="input" type="text" placeholder="John Doe" v-model="player.name" tabindex="1">
                                 </p>
                             </div>
                             <div v-if="view == 'scoring'">
@@ -51,15 +53,15 @@
                                     <div class="column">
                                         <p class="control has-addons">
                                             <a class="button">Bid</a>
-                                            <input type="number" class="input" v-model="player.bid">
+                                            <input type="number" class="input is-fullwidth" v-model="player.bid" tabindex="2">
                                         </p>
                                     </div>
-                                    <div class="column">
-                                        <a class="button is-success is-fullwidth" :class="{ 'is-disabled' : !player.bid }" @click="madeBid(player)">Made Bid</a>
+                                    <div class="column" :class="{ 'is-hidden-mobile' : player.bid == null || player.bid == '' }">
+                                        <a class="button is-success is-fullwidth" :class="{ 'is-disabled' : player.bid == null || player.bid == '' }" @click="madeBid(player)">Made Bid</a>
                                     </div>
-                                    <div class="column">
+                                    <div class="column" :class="{ 'is-hidden-mobile' : player.bid == null || player.bid == '' }">
                                         <div class="control has-addons">
-                                            <input type="number" class="input" :class="{ 'is-disabled' : !player.bid }" v-model="player.failed_bid" placeholder="Enter # Taken">
+                                            <input type="number" class="input is-fullwidth" :class="{ 'is-disabled' : !player.bid }" v-model="player.failed_bid" placeholder="Enter # Taken" tabindex="3">
                                             <a class="button is-danger" :class="{ 'is-disabled' : !player.bid }" @click="failedBid(player, index)">Failed Bid</a>
                                         </div>
                                         <span v-if="player.bid_error" class="help is-danger">BID CANNOT MATCH FAILED BID</span>
@@ -67,7 +69,7 @@
                                     <div class="column">
                                         <p class="control has-addons">
                                             <a class="button">Score</a>
-                                            <input type="number" class="input" v-model="player.score">
+                                            <input type="number" class="input is-fullwidth" v-model="player.score">
                                         </p>
                                     </div>
                                 </div>
@@ -80,7 +82,7 @@
         <div class="columns" v-else>
             <div class="column">
                 <div v-for="(player, index) in sorted_players">
-                    <div class="columns">
+                    <div class="columns is-flex-mobile">
                         <div class="column">
                             <div class="title circle48 pull-right tag is-light">
                                 {{index + 1}}

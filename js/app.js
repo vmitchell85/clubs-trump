@@ -6,25 +6,46 @@ var Vue = new Vue({
     },
     computed: {
         sorted_players: function(){
-            return this.players.sort(this.sortStandings).reverse();
+            var players = JSON.parse(JSON.stringify(this.players));
+            return players.sort(this.sortStandings).reverse();
         },
         totalBids: function(){
+
+            var bidSum = this.players.sum('bid');
+
+            if( bidSum !== parseInt(bidSum, 10) ){
+                return false;
+            }
+
+            var players = JSON.parse(JSON.stringify(this.players));
+
+            for( var entry in players ){
+                var player = players[entry];
+                if( isFunction(player) ){
+                    break;
+                }
+                if( player.bid !== parseInt(player.bid, 10) ){
+                    console.log(player);
+                    return false;
+                }
+            }
+
             return this.players.sum('bid');
         }
     },
     methods: {
         setPlayers: function(count){
             for (var i = 0; i < count; i++) {
-               this.addPlayer();
+               this.addPlayer('Player ' + (i + 1));
             }
             this.setView('names');
         },
-        addPlayer: function(){
+        addPlayer: function(name){
            this.players.push({
                 bid: null,
                 bid_error: false,
                 failed_bid: null,
-                name: null,
+                name: name,
                 score: 0,
             });
         },
@@ -76,6 +97,11 @@ var Vue = new Vue({
         }
     }
 });
+
+function isFunction(functionToCheck) {
+    var getType = {};
+    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+}
 
 Array.prototype.sum = function (prop) {
     var total = 0
