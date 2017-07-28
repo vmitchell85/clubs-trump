@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Clubs Trump Scoring</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.0/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/app.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -47,30 +47,42 @@
                             </div>
                             <div v-if="view == 'scoring'">
                                 <p style="margin-bottom: .5em;">
-                                    <strong>{{player.name}}</strong><br>                            
+                                    <strong>{{player.name}}</strong><br>
                                 </p>
                                 <div class="columns">
                                     <div class="column">
-                                        <p class="control has-addons">
-                                            <a class="button">Bid</a>
-                                            <input type="number" class="input is-fullwidth" v-model="player.bid" tabindex="2">
-                                        </p>
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                                <a class="button">Bid</a>
+                                            </p>
+                                            <p class="control">
+                                                <input type="number" class="input is-fullwidth" v-model="player.bid" tabindex="2">
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="column" :class="{ 'is-hidden-mobile' : player.bid == null || player.bid == '' }">
-                                        <a class="button is-success is-fullwidth" :class="{ 'is-disabled' : player.bid == null || player.bid == '' }" @click="madeBid(player)">Made Bid</a>
+                                    <div class="column" :class="{ 'is-hidden-mobile' : player.bid === null || player.bid === '' }">
+                                        <a class="button is-success is-fullwidth" :class="{ 'is-disabled' : player.bid === null || player.bid === '' }" @click="madeBid(player)">Made Bid</a>
                                     </div>
-                                    <div class="column" :class="{ 'is-hidden-mobile' : player.bid == null || player.bid == '' }">
-                                        <div class="control has-addons">
-                                            <input type="number" class="input is-fullwidth" :class="{ 'is-disabled' : !player.bid }" v-model="player.failed_bid" placeholder="Enter # Taken" tabindex="3">
-                                            <a class="button is-danger" :class="{ 'is-disabled' : player.bid == null || player.bid == '' || !player.failed_bid  }" @click="failedBid(player, index)">Failed Bid</a>
+                                    <div class="column" :class="{ 'is-hidden-mobile' : player.bid === null || player.bid === '' }">
+                                        <div class="field has-addons">
+                                            <p class="control">
+                                                <input type="number" class="input is-fullwidth" :class="{ 'is-disabled' : !player.bid }" v-model="player.failed_bid" placeholder="Enter # Taken" tabindex="3">
+                                            </p>
+                                            <p class="control">
+                                                <a class="button is-danger" :class="{ 'is-disabled' : player.bid === null || player.bid === '' || !player.failed_bid  }" @click="failedBid(player, index)">Failed Bid</a>
+                                            </p>
                                         </div>
                                         <span v-if="player.bid_error" class="help is-danger">BID CANNOT MATCH FAILED BID</span>
                                     </div>
                                     <div class="column">
-                                        <p class="control has-addons">
-                                            <a class="button">Score</a>
-                                            <input type="number" class="input is-fullwidth" v-model="player.score">
-                                        </p>
+                                        <div class="field has-addons is-fullwidth">
+                                            <p class="control">
+                                                <a class="button">Score</a>
+                                            </p>
+                                            <p class="control">
+                                                <input type="number" class="input" v-model="player.score">
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +165,7 @@
         </div>
     </div>
 </div>
-<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+<script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

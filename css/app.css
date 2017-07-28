@@ -38,6 +38,6 @@ html{
     line-height: 48px;
 }
 
-input.input.is-fullwidth{
+.field.is-fullwidth{
     width: 100% !important;
 }
