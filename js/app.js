@@ -53,7 +53,7 @@ var Vue = new Vue({
             this.view = value;
         },
         madeBid: function(player){
-            player.score += parseInt(player.bid) + 10;
+            player.score = parseInt(player.score) + parseInt(player.bid) + 10;
             player.bid = null;
             player.failed_bid = null;
             player.bid_error = false;
@@ -64,7 +64,7 @@ var Vue = new Vue({
                 return false;
             }
             player.bid_error = false;
-            player.score += parseInt(player.failed_bid);
+            player.score = parseInt(player.score) + parseInt(player.failed_bid);
             player.bid = null;
             player.failed_bid = null;
 
