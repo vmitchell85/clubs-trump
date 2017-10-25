@@ -1,0 +1,29 @@
+{
+    "name": "clubs-trump",
+    "version": "1.0.0",
+    "description": "This simple site allows you to keep track of scoring when you're playing Clubs Trump.",
+    "main": "index.js",
+    "scripts": {
+        "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vmitchell85/clubs-trump.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/vmitchell85/clubs-trump/issues"
+    },
+    "homepage": "https://github.com/vmitchell85/clubs-trump#readme",
+    "devDependencies": {
+        "beardcss": "^2.2.4",
+        "laravel-mix": "^1.5.1",
+        "vue": "^2.5.2"
+    }
+}
