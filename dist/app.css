@@ -244,6 +244,18 @@ img[height] {
   max-width: none;
 }
 
+.card {
+  background-color: white;
+  border-color: #3498DB;
+  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+          box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+
+.card-header {
+  -webkit-box-shadow: 0 1px 2px rgba(10, 10, 10, 0.1);
+          box-shadow: 0 1px 2px rgba(10, 10, 10, 0.1);
+}
+
 .tal {
   text-align: left !important;
 }
@@ -660,7 +672,9 @@ img[height] {
   }
 }
 
-.pv1 {
+.pv1,
+.card-header,
+.card-content {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
 }
@@ -1103,7 +1117,9 @@ img[height] {
   }
 }
 
-.ph2 {
+.ph2,
+.card-header,
+.card-content {
   padding-left: 2rem !important;
   padding-right: 2rem !important;
 }
@@ -10539,7 +10555,8 @@ img[height] {
   }
 }
 
-.ft4 {
+.ft4,
+.card-content {
   font-size: 15px;
   font-size: 1.5rem;
 }
@@ -10661,7 +10678,8 @@ img[height] {
   }
 }
 
-.ft6 {
+.ft6,
+.card-header {
   font-size: 18px;
   font-size: 1.8rem;
 }
@@ -17808,7 +17826,8 @@ img[height] {
   border-width: 3px !important;
 }
 
-.brdr3--top {
+.brdr3--top,
+.card {
   border-top-style: solid !important;
   border-top-width: 3px !important;
 }

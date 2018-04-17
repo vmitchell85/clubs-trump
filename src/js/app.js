@@ -1,6 +1,7 @@
 window.Vue = require('vue');
 
-Vue.component('root', require('./components/root'));
+Vue.component('clubs', require('./components/clubs'));
+Vue.component('standings', require('./components/standings'));
 
 let VueApp = new Vue({
     el: '#app'
